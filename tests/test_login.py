@@ -28,7 +28,6 @@ class TestStellarBurgersLogin:
         make_an_order_button = WebDriverWait(driver, Config.TIMEOUT).until(expected_conditions.visibility_of_element_located(StellarBurgersLocators.MAKE_AN_ORDER_BUTTON))
         assert make_an_order_button.is_displayed(), 'Кнопка "Оформить заказ" не отображается, Вы не вошли в личный кабинет'
 
-
     def test_login_from_login_button_in_registration_page(self, driver):
         WebDriverWait(driver, Config.TIMEOUT).until(expected_conditions.element_to_be_clickable(StellarBurgersLocators.ACCOUNT_LOGIN_BUTTON)).click()
         registration_link = WebDriverWait(driver, Config.TIMEOUT).until(expected_conditions.presence_of_element_located(StellarBurgersLocators.REGISTRATION_LINK))
@@ -38,6 +37,7 @@ class TestStellarBurgersLogin:
 
         login_link = WebDriverWait(driver, Config.TIMEOUT).until(expected_conditions.presence_of_element_located(StellarBurgersLocators.LOGIN_LINK))
         driver.execute_script("arguments[0].scrollIntoView();", login_link)
+        login_link.click()
 
         driver.find_element(*StellarBurgersLocators.EMAIL_FIELD).send_keys(Data.LOGIN)
         driver.find_element(*StellarBurgersLocators.PASSWORD_FIELD).send_keys(Data.PASSWORD)
@@ -49,6 +49,7 @@ class TestStellarBurgersLogin:
         driver.find_element(*StellarBurgersLocators.ACCOUNT_LOGIN_BUTTON).click()
         recovery_password_link = WebDriverWait(driver, Config.TIMEOUT).until(expected_conditions.presence_of_element_located(StellarBurgersLocators.RECOVERY_PASSWORD_LINK))
         driver.execute_script("arguments[0].scrollIntoView();", recovery_password_link)
+        recovery_password_link.click()
         WebDriverWait(driver, Config.TIMEOUT).until(expected_conditions.element_to_be_clickable(StellarBurgersLocators.LOGIN_LINK_ON_RECOVERY_PASSWORD_PAGE)).click()
         driver.find_element(*StellarBurgersLocators.EMAIL_FIELD).send_keys(Data.LOGIN)
         driver.find_element(*StellarBurgersLocators.PASSWORD_FIELD).send_keys(Data.PASSWORD)

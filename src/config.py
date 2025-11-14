@@ -1,3 +1,3 @@
 class Config:
-    URL = 'https://stellarburgers.nomoreparties.site'
+    URL = 'https://stellarburgers.education-services.ru'
     TIMEOUT = 15

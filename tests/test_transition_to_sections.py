@@ -5,7 +5,8 @@ from src.locators import StellarBurgersLocators
 
 class TestStellarBurgersTransitionToSections:
     def test_transition_to_section_buns(self, driver):
-        WebDriverWait(driver, Config.TIMEOUT).until(expected_conditions.element_to_be_clickable(StellarBurgersLocators.BUNS_SECTION)).click()
+        element = WebDriverWait(driver, Config.TIMEOUT).until(expected_conditions.element_to_be_clickable(StellarBurgersLocators.BUNS_SECTION))
+        driver.execute_script("arguments[0].click()", element)
         active_buns_section = WebDriverWait(driver, Config.TIMEOUT).until(expected_conditions.presence_of_element_located(StellarBurgersLocators.ACTIVE_BUNS_SECTION))
         assert "current" in active_buns_section.get_attribute("class"), "Переход в раздел 'Булки' не произошел"
 

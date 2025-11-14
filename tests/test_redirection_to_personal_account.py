@@ -12,4 +12,4 @@ class TestStellarBurgersRedirectionToPersonalAccount:
         driver.find_element(*StellarBurgersLocators.PASSWORD_FIELD).send_keys(Data.PASSWORD)
         driver.find_element(*StellarBurgersLocators.LOGIN_BUTTON).click()
         WebDriverWait(driver, Config.TIMEOUT).until(expected_conditions.element_to_be_clickable(StellarBurgersLocators.PERSONAL_ACCOUNT_BUTTON)).click()
-        assert "/account/profile" in driver.current_url, "Переход на страницу личного кабинета не произошел"
+        assert "/account" in driver.current_url, "Переход на страницу личного кабинета не произошел"

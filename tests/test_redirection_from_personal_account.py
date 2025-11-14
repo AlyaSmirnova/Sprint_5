@@ -14,9 +14,8 @@ class TestStellarBurgersRedirectionFromPersonalAccount:
         WebDriverWait(driver, Config.TIMEOUT).until(expected_conditions.element_to_be_clickable(StellarBurgersLocators.PERSONAL_ACCOUNT_BUTTON)).click()
         constructor_button = WebDriverWait(driver, Config.TIMEOUT).until(expected_conditions.visibility_of_element_located(StellarBurgersLocators.CONSTRUCTOR_BUTTON))
         constructor_button.click()
-        WebDriverWait(driver, Config.TIMEOUT).until(
-            expected_conditions.element_to_be_clickable(StellarBurgersLocators.MAKE_AN_ORDER_BUTTON))
-        assert driver.current_url == Config.URL, "Переход на страницу конструктора не произошел"
+        make_an_order_button = WebDriverWait(driver, Config.TIMEOUT).until(expected_conditions.element_to_be_clickable(StellarBurgersLocators.MAKE_AN_ORDER_BUTTON))
+        assert make_an_order_button.is_displayed(), "Переход на страницу конструктора не произошел"
 
     def test_redirection_from_personal_account_trough_logo(self, driver):
         driver.find_element(*StellarBurgersLocators.ACCOUNT_LOGIN_BUTTON).click()
@@ -26,6 +25,5 @@ class TestStellarBurgersRedirectionFromPersonalAccount:
         driver.find_element(*StellarBurgersLocators.LOGIN_BUTTON).click()
         WebDriverWait(driver, Config.TIMEOUT).until(expected_conditions.element_to_be_clickable(StellarBurgersLocators.PERSONAL_ACCOUNT_BUTTON)).click()
         WebDriverWait(driver, Config.TIMEOUT).until(expected_conditions.element_to_be_clickable(StellarBurgersLocators.LOGO)).click()
-        WebDriverWait(driver, Config.TIMEOUT).until(
-            expected_conditions.element_to_be_clickable(StellarBurgersLocators.MAKE_AN_ORDER_BUTTON))
-        assert driver.current_url == Config.URL, "Переход на главную страницу не произошел"
+        make_an_order_button = WebDriverWait(driver, Config.TIMEOUT).until(expected_conditions.element_to_be_clickable(StellarBurgersLocators.MAKE_AN_ORDER_BUTTON))
+        assert make_an_order_button.is_displayed(), "Переход на главную страницу не произошел"

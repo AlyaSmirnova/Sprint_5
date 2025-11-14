@@ -5,7 +5,7 @@ from src.helpers import generate_registration_user
 from src.locators import StellarBurgersLocators
 
 class TestStellarBurgersRegistration:
-    def test_succesful_registration(self, driver):
+    def test_successful_registration(self, driver):
         driver.get(f'{Config.URL}/register'.rstrip('/'))
         test_user = generate_registration_user()
         driver.find_element(*StellarBurgersLocators.NAME_FIELD).send_keys(test_user['name'])
