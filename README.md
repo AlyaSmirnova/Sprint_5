@@ -1,6 +1,6 @@
 # 📚 Stellar Burgers: UI Automation Framework
 
-![CI/CD Status](https://github.com/AlyaSmirnova/Sprint_5/actions/workflows/ui-tests.yml/badge.svg)
+![CI/CD Status](https://github.com/AlyaSmirnova/Sprint_5/actions/workflows/ui-tests.yml/badge.svg?branch=main)
 [![Python Version](https://img.shields.io/badge/python-3.11-blue)](https://www.python.org)
 [![Selenium](https://img.shields.io/badge/Tested%20with-Selenium-green?logo=selenium\&logoColor=white)](https://www.selenium.dev)
 [![Reports](https://img.shields.io/badge/Reports-Allure-orange?logo=allure)](https://github.com/USERNAME/REPOSITORY)
@@ -118,3 +118,4 @@ The project is fully automated using **GitHub Actions**. Upon every `push` to th
 3.  **Dependency Management:** Python environment is set up and all required libraries (Selenium, Pytest, Allure) are installed from `requirements.txt`.
 4.  **Headless Execution:** The full UI test suite is executed in **headless mode** to ensure stability in the server environment.
 5.  **Artifact Generation:** Test results, including **automated screenshots on failure**, are collected and stored as build artifacts for further analysis.
+
