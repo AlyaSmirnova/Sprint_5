@@ -1,39 +1,43 @@
-# 📚 Спринт 5: UI-тесты для сайта Stellar Burgers.
+# 📚 Stellar Burgers: UI Automation Framework
 
-Автотесты для проверки сервиса Stellar Burgers. Это космический фастфуд: можно собрать и заказать бургер из необычных ингредиентов.
+![CI/CD Status](https://github.com/AlyaSmirnova/Sprint_5/actions/workflows/ui-tests.yml/badge.svg)
+[![Python Version](https://img.shields.io/badge/python-3.11-blue)](https://www.python.org)
+[![Selenium](https://img.shields.io/badge/Tested%20with-Selenium-green?logo=selenium\&logoColor=white)](https://www.selenium.dev)
+[![Reports](https://img.shields.io/badge/Reports-Allure-orange?logo=allure)](https://github.com/USERNAME/REPOSITORY)
 
-## ✅ Оглавление
-1. Описание
-2. Технологии
-3. Структура проекта
-4. Тестирование
-5. Запуск автотестов
+## ✅ Table of Contents
+1. [Description](#-description)
+2. [Tech Stack & Tools](#-tech-stack-&-tools)
+3. [Project Architecture](#-project-architecture)
+4. [Allure Reporting Features](#-allure-reporting-features)
+5. [Test Coverage](#-test-coverage)
+6. [Execution Guide](#-execution-guide)
+7. [CI/CD Workflow](#-cicd-workflow)
 
-## 💫 Описание
+## 💫 Description
 
-Этот проект состоит из автотестов для проверки UI различных элементов на сайте **Stellar Burgers**, включая: 
+This project features an automated UI testing suite for the **Stellar Burgers** service — a space-themed fast-food application where users can assemble and order unique burgers.
+The framework validates critical user journeys, including registration, authentication, navigation, and personal account management, ensuring a seamless user experience across the platform.
 
-- регистрации нового пользователя;
-- вход через формы регистрации и восстановления пароля;
-- проверки кликов по кнопкам и ссылкам (например, на логотип, "Личный кабинет", "Конструктор");
-- проверка работы кнопки "Выход" в личном кабинете.
+## 🧑‍💻 Tech Stack & Tools
+- **Language:** Python 3.10+
+- **Framework:** [Pytest](https://docs.pytest.org/)
+- **Browser Automation:** [Selenium WebDriver](https://www.selenium.dev)
+- **Reporting:** Allure Framework (with automated screenshots on failure)
+- **CI/CD:** GitHub Actions
 
-## 🧑‍💻 Технологии
-- Python 3.10+
-- [Pytest](https://docs.pytest.org/)
-- [Selenium WebDriver](https://www.selenium.dev/documentation/webdriver/)
-- [Google Chrome](https://www.google.com/intl/ru_ru/chrome/) 
-
-## 📁 Структура проекта
+## 📁 Project Architecture
 ```text
-Sprint_5/
-    ├── src                    # Вспомогательные модули
-    │   ├── config.py       
-    │   ├── data.py
-    │   ├── helpers.py
-    │   ├── locators.py
+
+    ├── .github/workflows/     # CI/CD pipeline configuration 
+    ├── allure-results/        # Raw test execution data (generated after run) 
+    ├── src                    # Support modules & utilities
+    │   ├── config.py          # Global settings (URL, Timeouts)
+    │   ├── data.py            # Test data (Credentials)
+    │   ├── helpers.py         # Generators (User registration data)
+    │   ├── locators.py        # Web element selectors
     │ 
-    ├── tests/                 # Тестовые сценарии
+    ├── tests/                 # UI Test scenarios
     │   ├── test_login.py
     │   ├── test_logout_from_personal_account.py
     │   ├── test_redirection_from_personal_account.py
@@ -41,34 +45,76 @@ Sprint_5/
     │   ├── test_registration_form.py    
     │   ├── test_transition_to_sections.py
     │   
-    ├── conftest.py              # Файл с фикстурами
-    └── requirements.txt         # Файл с зависимостями для проекта
+    ├── conftest.py             # Fixtures
+    ├── requirements.txt        # List of project dependencies
+    └── README.md               # Comprehensive project documentation
 ```
-## 🧪 Тестирование
-Все тесты написаны с использованием [Selenium WebDriver](https://www.selenium.dev/documentation/webdriver/) и [Pytest](https://docs.pytest.org/). Тесты проверяют следующие функциональности и элементы: 
-1. Успешную регистрацию нового пользователя; 
-2. Проверку ошибки регистрации при вводе некорректного пароля; 
-3. Проверку входа в личный аккаунт через кнопку "Войти в аккаунт" на главной странице сайта; 
-4. Проверку входа в личный аккаунт через кнопку "Личный кабинет"; 
-5. Проверку входа через кнопку в форме регистрации; 
-6. Проверку входа через кнопку в форме восстановления пароля; 
-7. Проверку перехода в личный аккаунт по клику на кнопку "Личный кабинет"; 
-8. Проверку перехода в раздел "Конструктор" из раздела "Личный кабинет";
-9. Проверку перехода на главную страницу по клику на логотип из раздела "Личный кабинет";
-10. Выход из личного аккаунта по кнопке "Выход";
-11. Проверки перехода по разделам "Булки", "Соусы" и "Начинки".
 
-## ⚙️ Запуск автотестов
+## 📊 Allure Reporting Features
+The project is integrated with the **Allure Framework** to provide deep visibility into the UI automation process. Key features include:
 
-1. **Клонирование репозитория**
+*   **Visual Evidence:** Automated **browser screenshots** are captured and attached to the report for every failed test, enabling rapid debugging.
+*   **Dynamic Test Documentation:** Uses `@allure.title` and `@allure.description` to transform technical code into readable test scenarios.
+*   **Hierarchical Grouping:** Tests are organized by **Suites** (e.g., Authentication) and **Features** (e.g., Login Logic) for structured analysis.
+*   **Step-by-Step Execution:** Detailed `@allure.step` logging tracks every user action, such as clicking buttons or filling forms, in real-time.
+
+## 🧪 Test Coverage
+The automation suite provides comprehensive coverage for the following functional modules of the **Stellar Burgers** service:
+
+### 1. User Authentication & Registration
+* **New User Signup:** Successful registration with valid data.
+* **Input Validation:** Error handling for invalid registration (e.g., password length < 6 characters).
+* **Login Entry Points:** Verification of authorization via the Main Page, "Personal Account" button, Registration form, and Password Recovery page.
+
+### 2. Navigation & User Interface
+* **Personal Account Access:** Seamless transition to the user profile section for authorized users.
+* **Constructor Navigation:** Quick redirection back to the burger builder from the Account section via the "Constructor" button or the company Logo.
+* **Ingredient Categories:** Switching between "Buns", "Sauces", and "Fillings" tabs in the main constructor.
+
+### 3. Session Management
+* **Secure Logout:** Verification of the "Exit" button functionality and correct redirection to the login page after session termination.
+
+### 4. Technical Implementation
+* **Dynamic Waits:** Usage of `WebDriverWait` and `expected_conditions` to handle asynchronous element loading.
+* **Stable Interactions:** Implementation of **JavaScript Click** and **Scroll-into-view** methods to bypass UI overlays and animations.
+
+## 🚀 Execution Guide
+
+### 1. Environment Setup
+Clone the repository and set up a local virtual environment to ensure dependency isolation:
+
+1. **Clone repository**
 > ```bash 
-> git clone https://github.com/AlyaSmirnova/Sprint_5.git
+> git clone https://github.com/AlyaSmirnova/Sprint_5
 > cd Sprint_5
-📦 Репозиторий проекта: [Sprint_5](https://github.com/AlyaSmirnova/Sprint_5)
+📦 Repository: [Sprint_5](https://github.com/AlyaSmirnova/Sprint_5)
 
-2. **Установка зависимостей**
+2. **Create a virtual environment**
+> ```bash 
+> python -m venv venv
+
+3. **Activate the virtual environment**
+> ```bash 
+> source venv/bin/activate
+
+4. **Install required dependencies**
 > `$ pip install -r requirements.txt`
 
+### 2. Running Tests
+Execute the full test suite and collect raw data for the Allure report:
+> ```bash 
+> pytest -v --alluredir=allure-results
 
+### 3. Generatig Allure Report
+Transform the raw data into a visual, interactive HTML report:
+> ```bash 
+> allure serve allure-results
 
+## ⚙️ CI/CD Workflow
+The project is fully automated using **GitHub Actions**. Upon every `push` to the **main** branch or any `Pull Request` creation:
 
+1.  **Environment Provisioning:** A clean **Ubuntu** runner is initialized in the cloud.
+2.  **Browser Setup:** The latest **Google Chrome** browser and **ChromeDriver** are automatically installed and configured.
+3.  **Dependency Management:** Python environment is set up and all required libraries (Selenium, Pytest, Allure) are installed from `requirements.txt`.
+4.  **Headless Execution:** The full UI test suite is executed in **headless mode** to ensure stability in the server environment.
+5.  **Artifact Generation:** Test results, including **automated screenshots on failure**, are collected and stored as build artifacts for further analysis.
