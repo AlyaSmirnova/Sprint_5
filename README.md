@@ -53,7 +53,6 @@ The framework validates critical user paths, including registration, authenticat
 ## 📊 Allure Reporting Features
 The project is integrated with the **Allure Framework** to provide deep visibility into the UI automation process. Key features include:
 
-*   **Visual Evidence:** Automated **browser screenshots** are captured and attached to the report for every failed test, enabling rapid debugging.
 *   **Dynamic Test Documentation:** Uses `@allure.title` and `@allure.description` to transform technical code into readable test scenarios.
 *   **Hierarchical Grouping:** Tests are organized by **Suites** (e.g., Authentication) and **Features** (e.g., Login Logic) for structured analysis.
 *   **Step-by-Step Execution:** Detailed `@allure.step` logging tracks every user action, such as clicking buttons or filling forms, in real-time.
