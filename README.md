@@ -17,7 +17,7 @@
 ## 💫 Description
 
 This project features an automated UI testing suite for the **Stellar Burgers** service — a space-themed fast-food application where users can assemble and order unique burgers.
-The framework validates critical user journeys, including registration, authentication, navigation, and personal account management, ensuring a seamless user experience across the platform.
+The framework validates critical user paths, including registration, authentication, navigation, and personal account management, ensuring a seamless user experience across the platform.
 
 ## 🧑‍💻 Tech Stack & Tools
 - **Language:** Python 3.10+
